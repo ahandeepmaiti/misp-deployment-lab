@@ -1,7 +1,7 @@
 # 🛡️ MISP Deployment with PyMISP Integration on Ubuntu 18.04
 
 > **Project Phase:** ✅ Phase 1: MISP Deployment | ⏳ Phase 2: WAJUH Integration  
-> **Author:** [Your Name]  
+> **Author:** Ahandeep Maiti 
 > **Tags:** `MISP`, `Threat Intelligence`, `IOC`, `OSINT`, `Cybersecurity`, `PyMISP`
 
 ---
