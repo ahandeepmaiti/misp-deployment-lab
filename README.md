@@ -78,10 +78,6 @@ Pre-configured OSINT feeds like **Feodo Tracker**, **MalwareBazaar** for IOC enr
 > **Focus Areas:** MISP Installation | PyMISP Integration | IOC Automation  
 > **Tags:** `MISP`, `Ubuntu 18.04`, `Threat Intelligence`, `PyMISP`, `Cybersecurity`, `IOC`
 
-# 🚀 Setting Up MISP on Ubuntu 18.04 & Quick Intro to PyMISP
-
-> **Focus Areas:** MISP Installation | PyMISP Integration | IOC Automation  
-> **Tags:** `MISP`, `Ubuntu 18.04`, `Threat Intelligence`, `PyMISP`, `Cybersecurity`, `IOC`
 
 ---
 
