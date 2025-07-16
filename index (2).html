@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MISP Deployment Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f9f9fb;
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            font-weight: 600;
+        }
+        h2 {
+            margin-top: 40px;
+            color: #444;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        th {
+            background-color: #e9ecef;
+        }
+        tr:nth-child(even) {
+            background-color: #f5f5f5;
+        }
+        .progress-bar {
+            height: 18px;
+            background-color: #28a745;
+            color: white;
+            font-size: 12px;
+            text-align: center;
+            line-height: 18px;
+            border-radius: 4px;
+        }
+        .progress-container {
+            background-color: #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🔐 MISP Deployment & Integration Lab</h1>
+
+<div class="section">
+    <p>This project involves setting up and customizing <strong>MISP (Malware Information Sharing Platform)</strong> on a virtual environment, enabling automated ingestion of IOCs and future integration with other tools like WAJUH for extended correlation and alerting functionalities.</p>
+</div>
+
+<div class="section">
+    <h2>🏗️ Architecture Flow</h2>
+    <p>This diagram illustrates the core structure of how MISP organizes and enriches threat intelligence data:</p>
+    <img src="https://raw.githubusercontent.com/ahandeepmaiti/misp-deployment-lab/main/assets/misp_flowchart.svg" alt="MISP Flow Diagram">
+</div>
+
+<div class="section">
+    <h2>🚀 Deployment Status Chart</h2>
+
+    <h3>✅ Phase 1: MISP Deployment</h3>
+    <table>
+        <thead><tr><th>Task</th><th>Progress</th></tr></thead>
+        <tbody>
+            <tr><td>VM Setup</td><td><div class="progress-container"><div class="progress-bar" style="width:100%">100%</div></div></td></tr>
+            <tr><td>MISP Installation</td><td><div class="progress-container"><div class="progress-bar" style="width:100%">100%</div></div></td></tr>
+            <tr><td>Firewall Config</td><td><div class="progress-container"><div class="progress-bar" style="width:100%">100%</div></div></td></tr>
+            <tr><td>Org/User Setup</td><td><div class="progress-container"><div class="progress-bar" style="width:100%">100%</div></div></td></tr>
+            <tr><td>Threat Feeds</td><td><div class="progress-container"><div class="progress-bar" style="width:100%">100%</div></div></td></tr>
+            <tr><td>PyMISP Setup</td><td><div class="progress-container"><div class="progress-bar" style="width:100%">100%</div></div></td></tr>
+            <tr><td>IOC Automation</td><td><div class="progress-container"><div class="progress-bar" style="width:100%">100%</div></div></td></tr>
+        </tbody>
+    </table>
+
+    <h3>⏳ Phase 2: WAJUH Integration</h3>
+    <table>
+        <thead><tr><th>Task</th><th>Progress</th></tr></thead>
+        <tbody>
+            <tr><td>Feed Format</td><td><div class="progress-container"><div class="progress-bar" style="width:50%; background:#ffc107;">50%</div></div></td></tr>
+            <tr><td>Parser Script</td><td><div class="progress-container"><div class="progress-bar" style="width:20%; background:#ffc107;">20%</div></div></td></tr>
+            <tr><td>MISP Sync</td><td><div class="progress-container"><div class="progress-bar" style="width:0%; background:#dc3545;">0%</div></div></td></tr>
+            <tr><td>Correlation</td><td><div class="progress-container"><div class="progress-bar" style="width:0%; background:#dc3545;">0%</div></div></td></tr>
+            <tr><td>Alert Automation</td><td><div class="progress-container"><div class="progress-bar" style="width:0%; background:#dc3545;">0%</div></div></td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="section">
+    <h2>🧠 MISP Data Hierarchy & Concepts</h2>
+    <ul>
+        <li><strong>Events:</strong> A MISP event contains all related context — such as indicators from a specific intrusion — like IPs, domains, or file hashes.</li>
+        <li><strong>Objects:</strong> Predefined combinations of attributes to represent real-world use cases like phishing emails or malware files.</li>
+        <li><strong>Attributes:</strong> Atomic elements like an IP address, domain, hash, or email — tagged with category and IDS flag for detection.</li>
+        <li><strong>Feeds:</strong> External open-source or premium data streams integrated with MISP for automated IOC enrichment.</li>
+    </ul>
+</div>
+
+</body>
+</html>
