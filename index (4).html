@@ -1,149 +1,153 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MISP Deployment Lab</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body {
       font-family: 'Montserrat', sans-serif;
-      background-color: #fdfdfd;
-      color: #222;
-      padding: 30px;
-      max-width: 960px;
-      margin: auto;
+      margin: 0;
+      padding: 20px;
+      background: #f9f9f9;
+      color: #1a1a1a;
     }
-    h1, h2, h3 {
-      font-weight: 600;
+    h1, h2 {
       color: #2c3e50;
-    }
-    h1 {
-      margin-bottom: 0.3em;
-    }
-    .badge {
-      background: #eee;
-      padding: 2px 8px;
-      border-radius: 4px;
-      font-size: 0.85em;
-    }
-    table {
-      border-collapse: collapse;
-      width: 100%;
-      margin-bottom: 2rem;
-    }
-    table th, table td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: left;
-    }
-    table th {
-      background-color: #f2f2f2;
-    }
-    .progress {
-      height: 18px;
-      background-color: #28a745;
-      text-align: center;
-      color: white;
-      font-size: 12px;
-      line-height: 18px;
-      border-radius: 3px;
-    }
-    .progress-wrapper {
-      background: #ddd;
-      border-radius: 3px;
-      overflow: hidden;
-    }
-    .low {
-      background-color: #dc3545;
-    }
-    .mid {
-      background-color: #ffc107;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-      border: 1px solid #ccc;
-      margin: 1em 0;
     }
     .section {
       margin-bottom: 40px;
     }
+    .progress-container {
+      margin: 10px 0;
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 600;
+    }
+    .progress-bar {
+      width: 100%;
+      background-color: #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+      height: 20px;
+      margin-top: 4px;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background-color: #3498db;
+      text-align: right;
+      padding-right: 5px;
+      color: white;
+      font-size: 12px;
+      line-height: 20px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 20px;
+    }
+    .dark-mode {
+      background-color: #1e1e1e;
+      color: #f4f4f4;
+    }
+    .dark-mode .progress-bar {
+      background-color: #333;
+    }
+    .dark-mode .progress-bar-fill {
+      background-color: #58a6ff;
+      color: #000;
+    }
+    button {
+      margin-bottom: 20px;
+      padding: 8px 14px;
+      background-color: #222;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
   </style>
-
-<style>
-  .dark-mode {
-    background-color: #1e1e1e;
-    color: #f4f4f4;
-  }
-  .dark-mode table th {
-    background-color: #333;
-  }
-  .dark-mode .progress-wrapper {
-    background: #444;
-  }
-  .dark-mode .progress {
-    color: black;
-    font-weight: bold;
-  }
-</style>
-
-
-<script>
-  function toggleDarkMode() {
-    document.body.classList.toggle('dark-mode');
-  }
-</script>
-
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+  </script>
 </head>
 <body>
+  <button onclick="toggleDarkMode()">🌓 Toggle Dark Mode</button>
 
-<div style="text-align:right;">
-  <button onclick="toggleDarkMode()" style="padding:6px 12px; margin-bottom:15px; background:#222; color:#fff; border:none; border-radius:4px;">🌓 Toggle Dark Mode</button>
-</div>
+  <h1>🛡️ MISP Deployment with PyMISP Integration</h1>
+  <p><strong>Phase 1:</strong> ✅ MISP Setup | <strong>Phase 2:</strong> ⏳ WAJUH Integration</p>
+  <p><strong>Author:</strong> Ahandeep Maiti</p>
 
+  <div class="section">
+    <h2>📘 Overview</h2>
+    <p>This lab demonstrates the setup of <strong>MISP (Malware Information Sharing Platform)</strong> on <strong>Ubuntu 18.04</strong>, including firewall hardening, organization and user provisioning, threat intelligence feed integration, and IOC automation using <strong>PyMISP</strong>.</p>
+  </div>
 
-<h1>🛡️ MISP Deployment with PyMISP Integration on Ubuntu 18.04</h1>
+  <div class="section">
+    <h2>📐 MISP Architecture Flow</h2>
+    <img src="assets/misp_flowchart.svg" alt="MISP Event-Object-Attribute Hierarchy" />
+  </div>
 
-<p><strong>Project Phase:</strong> ✅ Phase 1: MISP Deployment | ⏳ Phase 2: WAJUH Integration<br>
-<strong>Author:</strong> Ahandeep Maiti <span class="badge">MISP</span> <span class="badge">Threat Intelligence</span> <span class="badge">IOC</span> <span class="badge">OSINT</span> <span class="badge">Cybersecurity</span> <span class="badge">PyMISP</span></p>
+  <div class="section">
+    <h2>🚦 Deployment Progress</h2>
 
-<div class="section">
-  <h2>📌 Overview</h2>
-  <p>This project covers a full deployment of <strong>MISP (Malware Information Sharing Platform)</strong> on <strong>Ubuntu 18.04</strong>, followed by basic automation using <strong>PyMISP</strong>—a Python library to push and pull Indicators of Compromise (IOCs). This serves as a foundational module for future integrations with alerting tools like Wazuh.</p>
-</div>
+    <h3>✅ Phase 1: MISP Deployment</h3>
+    <div class="progress-container">
+      <div class="progress-label"><span>VM Setup</span><span>100%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" style="width:100%;">100%</div></div>
+    </div>
+    <div class="progress-container">
+      <div class="progress-label"><span>MISP Installation</span><span>100%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" style="width:100%;">100%</div></div>
+    </div>
+    <div class="progress-container">
+      <div class="progress-label"><span>Firewall Config</span><span>100%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" style="width:100%;">100%</div></div>
+    </div>
+    <div class="progress-container">
+      <div class="progress-label"><span>Org/User Setup</span><span>100%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" style="width:100%;">100%</div></div>
+    </div>
+    <div class="progress-container">
+      <div class="progress-label"><span>Threat Feeds</span><span>100%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" style="width:100%;">100%</div></div>
+    </div>
+    <div class="progress-container">
+      <div class="progress-label"><span>PyMISP Setup</span><span>100%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" style="width:100%;">100%</div></div>
+    </div>
+    <div class="progress-container">
+      <div class="progress-label"><span>IOC Automation</span><span>100%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" style="width:100%;">100%</div></div>
+    </div>
 
-<div class="section">
-  <h2>🧱 Architecture Flow</h2>
-  <p>This flow diagram illustrates the structure of data processing within MISP.</p>
-  <img src="https://raw.githubusercontent.com/ahandeepmaiti/misp-deployment-lab/main/assets/misp_flowchart.svg" alt="MISP Flow Diagram">
-</div>
-
-<div class="section">
-  <h2>🚀 Deployment Status Chart</h2>
-
-  <h3>✅ Phase 1: MISP Deployment</h3>
-  <table>
-    <tr><th>Task</th><th>Progress</th></tr>
-    <tr><td>VM Setup</td><td><div class="progress-wrapper"><div class="progress" style="width: 100%">100%</div></div></td></tr>
-    <tr><td>MISP Installation</td><td><div class="progress-wrapper"><div class="progress" style="width: 100%">100%</div></div></td></tr>
-    <tr><td>Firewall Config</td><td><div class="progress-wrapper"><div class="progress" style="width: 100%">100%</div></div></td></tr>
-    <tr><td>Org/User Setup</td><td><div class="progress-wrapper"><div class="progress" style="width: 100%">100%</div></div></td></tr>
-    <tr><td>Threat Feeds</td><td><div class="progress-wrapper"><div class="progress" style="width: 100%">100%</div></div></td></tr>
-    <tr><td>PyMISP Setup</td><td><div class="progress-wrapper"><div class="progress" style="width: 100%">100%</div></div></td></tr>
-    <tr><td>IOC Automation</td><td><div class="progress-wrapper"><div class="progress" style="width: 100%">100%</div></div></td></tr>
-  </table>
-
-  <h3>⏳ Phase 2: WAJUH Integration</h3>
-  <table>
-    <tr><th>Task</th><th>Progress</th></tr>
-    <tr><td>Feed Format</td><td><div class="progress-wrapper"><div class="progress mid" style="width: 50%">50%</div></div></td></tr>
-    <tr><td>Parser Script</td><td><div class="progress-wrapper"><div class="progress mid" style="width: 20%">20%</div></div></td></tr>
-    <tr><td>MISP Sync</td><td><div class="progress-wrapper"><div class="progress low" style="width: 0%">0%</div></div></td></tr>
-    <tr><td>Correlation</td><td><div class="progress-wrapper"><div class="progress low" style="width: 0%">0%</div></div></td></tr>
-    <tr><td>Alert Automation</td><td><div class="progress-wrapper"><div class="progress low" style="width: 0%">0%</div></div></td></tr>
-  </table>
-</div>
-
+    <h3>⏳ Phase 2: WAJUH Integration</h3>
+    <div class="progress-container">
+      <div class="progress-label"><span>Feed Format</span><span>50%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" style="width:50%;">50%</div></div>
+    </div>
+    <div class="progress-container">
+      <div class="progress-label"><span>Parser Script</span><span>20%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" style="width:20%;">20%</div></div>
+    </div>
+    <div class="progress-container">
+      <div class="progress-label"><span>MISP Sync</span><span>0%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" style="width:0%;background:#bbb;">0%</div></div>
+    </div>
+    <div class="progress-container">
+      <div class="progress-label"><span>Correlation</span><span>0%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" style="width:0%;background:#bbb;">0%</div></div>
+    </div>
+    <div class="progress-container">
+      <div class="progress-label"><span>Alert Automation</span><span>0%</span></div>
+      <div class="progress-bar"><div class="progress-bar-fill" style="width:0%;background:#bbb;">0%</div></div>
+    </div>
+  </div>
 </body>
 </html>
